@@ -1,6 +1,7 @@
 package com.tobilko.sorting;
 
-import com.tobilko.Assistant;
+import static com.tobilko.Assistant.exchange;
+import static com.tobilko.Assistant.greater;
 
 /**
  * Worst case performance: O(n<sup>2</sup>)
@@ -16,8 +17,8 @@ public class BubbleSort {
         while (!isSorted) {
             isSorted = true;
             for (int i = 0; i < length - 1; ++i) {
-                if (Assistant.greater(array, i, i + 1)) {
-                    Assistant.exchange(array, i, i + 1);
+                if (greater(array[i], array[i + 1])) {
+                    exchange(array, i, i + 1);
                     isSorted = false;
                 }
             }
