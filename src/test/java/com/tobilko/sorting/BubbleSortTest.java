@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class BubbleSortTest {
     @Test
     public void test() throws Exception {
-        Double[] array = Assistant.generate(Byte.MAX_VALUE, Double.MIN_VALUE / 2, Double.MAX_VALUE / 2);
+        Integer[] array = Assistant.generate(Byte.MAX_VALUE, Integer.MIN_VALUE / 2, Integer.MAX_VALUE / 2);
         assertEquals("The array has already been sorted.", false, Assistant.isSorted(array));
         Assistant.show(array);
         BubbleSort.sort(array);

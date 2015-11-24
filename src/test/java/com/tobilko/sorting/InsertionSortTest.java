@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class InsertionSortTest {
     @Test
     public void test() throws Exception {
-        Long[] array = Assistant.generate(Byte.MAX_VALUE, Long.MIN_VALUE / 2, Long.MAX_VALUE / 2);
+        Integer[] array = Assistant.generate(Byte.MAX_VALUE, Integer.MIN_VALUE / 2, Integer.MAX_VALUE / 2);
         assertEquals("The array has already been sorted.", false, Assistant.isSorted(array));
         Assistant.show(array);
         InsertionSort.sort(array);

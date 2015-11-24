@@ -13,9 +13,9 @@ import static com.tobilko.Assistant.less;
 public class SelectionSort {
     public static <T extends Comparable<T>> void sort(T[] array) {
         int length = array.length;
-        for (int i = 0; i < length - 1; i++) {
+        for (int i = 0; i < length - 1; ++i) {
             int min = i;
-            for (int j = i + 1; j < length; j++) {
+            for (int j = i + 1; j < length; ++j) {
                 if (less(array[j], array[min])) {
                     min = j;
                 }

@@ -13,8 +13,8 @@ import static com.tobilko.Assistant.exchange;
 public class InsertionSort {
     public static <T extends Comparable<T>> void sort(T[] array) {
         int length = array.length;
-        for (int i = 1; i < length; i++) {
-            for (int j = i; j > 0 && less(array[j], array[j - 1]); j--) {
+        for (int i = 1; i < length; ++i) {
+            for (int j = i; j > 0 && less(array[j], array[j - 1]); --j) {
                 exchange(array, j, j - 1);
             }
         }
