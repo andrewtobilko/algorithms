@@ -22,4 +22,9 @@ public class AdjacencyListGraph extends Graph {
 
     }
 
+    @Override
+    public List<Integer> getNeighbors(int vertex) {
+        return graph.get(vertex);
+    }
+
 }
