@@ -15,12 +15,16 @@ public class AdjacencyListGraph extends Graph {
 
     @Override
     protected void performAddingVertex(int vertex) {
-
+        graph.put(vertex, new ArrayList<>());
     }
 
     @Override
     protected void performAddingEdge(int a, int b) {
-
+        if (graph.containsKey(a)) {
+            graph.get(a).add(b);
+        } else {
+            throw new IllegalArgumentException("There is not a " + a + " vertex!");
+        }
     }
 
     @Override

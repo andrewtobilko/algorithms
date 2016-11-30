@@ -9,19 +9,19 @@ import java.util.List;
  */
 public abstract class Graph {
 
-    private int V;
-    private int E;
+    private int vertexAmount;
+    private int edgeAmount;
 
-    public int getV() { return V; }
-    public int getE() { return E; }
+    public int getVertexAmount() { return vertexAmount; }
+    public int getEdgeAmount() { return edgeAmount; }
 
     public final void addVertex(int vertex) {
         performAddingVertex(vertex);
-        ++V;
+        ++vertexAmount;
     }
     public final void addEdge(int a, int b) {
         performAddingEdge(a, b);
-        ++E;
+        ++edgeAmount;
     }
 
     public abstract List<Integer> getNeighbors(int vertex);
