@@ -1,5 +1,6 @@
 package com.tobilko.graphs;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +25,7 @@ public class AdjacencyListGraph extends Graph {
 
     @Override
     public List<Integer> getNeighbors(int vertex) {
-        return graph.get(vertex);
+        return new ArrayList<>(graph.get(vertex));
     }
 
 }

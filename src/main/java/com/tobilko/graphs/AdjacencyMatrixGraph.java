@@ -25,7 +25,7 @@ public class AdjacencyMatrixGraph extends Graph {
 
     @Override
     public List<Integer> getNeighbors(int vertex) {
-        return Arrays.stream(graph[vertex]).filter(i -> i > 1).boxed().collect(Collectors.toList());
+        return Arrays.stream(graph[vertex]).filter(i -> i != 1).boxed().collect(Collectors.toList());
     }
 
 }
