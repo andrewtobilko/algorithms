@@ -5,8 +5,12 @@
 *Graph* - a set of vertices [notes, points] in which some pairs are wired by edges [arcs, lines].
 *Path* - a sequence of vertices and edges that depicts hopping along graph.
 
+---
+
 *Vertex degree* - the sum of in-degree (a number of endpoint edges) and out-degree (a number of start point edges).
 *Distance* - is the shortest length of a path between two vertices.
+
+---
 
 *Path length* - the number of times it traverses edges.
 *Path cost* - the sum of the weights of each of the edges it traverses.
