@@ -25,7 +25,9 @@
 - dense
 - sparse
 
-**Adjacency matrices:**
+** Graph representation **
+
+1.Adjacency matrices:
 
     0 1 0                   
     1 0 0        =>         0 -> 1, 1 -> 0   
@@ -37,7 +39,7 @@
  - [-] show to add (`O(|V|²))`) and to remove vertices (`O(|V|²)`)
  - [-] requires a lot of memory `O(|V|²)`
  
- **Adjacency lists:**
+2.Adjacency lists:
 
     0 -> [1]
     1 -> [0]
@@ -47,3 +49,9 @@
  - [?] uses a lot less memory than adjacency matrix (`O(|V| + |E|)`)
  - [?] removing edges/vertices (`O(|E|)`)
  - [?] getting (`O(|V|)`)
+ 
+** Depth first search (DFS) **
+
+1. there is a graph G = (V, E), all vertices are white
+2. iterate over all vertices (v є V)
+3. if a vertex v is white, then perform DFS(v)
