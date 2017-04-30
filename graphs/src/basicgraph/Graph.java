@@ -29,24 +29,13 @@ public abstract class Graph {
 	private Map<Integer,String> vertexLabels;
 	
 	/**
-	 * Create a new empty Graph
-	 */
-	public Graph() {
-		numVertices = 0;
-		numEdges = 0;
-		vertexLabels = null;
-	}
-
-	
-	/**
 	 * Report size of vertex set
 	 * @return The number of vertices in the graph.
 	 */
 	public int getNumVertices() {
 		return numVertices;
 	}
-	
-	
+
 	/**
 	 * Report size of edge set
 	 * @return The number of edges in the graph.
@@ -229,7 +218,7 @@ public abstract class Graph {
 	
 	/** Main method provided with some basic tests.  */
 	public static void main (String[] args) {
-		GraphLoader.createIntersectionsFile("data/maps/ucsd.map", "data/intersections/ucsd.intersections");
+		GraphLoader.createIntersectionsFile("graphs/data/maps/ucsd.map", "graphs/data/intersections/ucsd.intersections");
 		
 
 		// For testing of Part 1 functionality
@@ -241,7 +230,7 @@ public abstract class Graph {
 		System.out.println("****");
 		System.out.println("Roads / intersections:");
 		GraphAdjList graphFromFile = new GraphAdjList();
-		GraphLoader.loadRoadMap("data/testdata/simpletest.map", graphFromFile);
+		GraphLoader.loadRoadMap("graphs/data/testdata/simpletest.map", graphFromFile);
 		System.out.println(graphFromFile);
 		
 		System.out.println("Observe all degrees are <= 12.");
@@ -253,7 +242,7 @@ public abstract class Graph {
 		
 		System.out.println("Flight data:");
 		GraphAdjList airportGraph = new GraphAdjList();
-		GraphLoader.loadRoutes("data/airports/routesUA.dat", airportGraph);
+		GraphLoader.loadRoutes("graphs/data/airports/routesUA.dat", airportGraph);
 		System.out.println(airportGraph);
 		System.out.println("Observe most degrees are small (1-30), eight are over 100.");
 		System.out.println("****");

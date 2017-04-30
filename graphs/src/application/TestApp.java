@@ -17,6 +17,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.util.function.Function;
+
 public class TestApp extends Application
 					 implements MapComponentInitializedListener {
 	protected GoogleMapView mapComponent;
