@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /** A class that implements a directed graph. 
  * The graph may have self-loops, parallel edges. 
@@ -19,22 +18,13 @@ import java.util.Set;
 public class GraphAdjList extends Graph {
 
 
-	private Map<Integer,ArrayList<Integer>> adjListsMap;
-	
-	/** 
-	 * Create a new empty Graph
-	 */
-	public GraphAdjList () {
-		adjListsMap = new HashMap<Integer,ArrayList<Integer>>();
-	}
+	private Map<Integer,ArrayList<Integer>> adjListsMap = new HashMap<>();
 
 	/** 
 	 * Implement the abstract method for adding a vertex. 
 	 */
 	public void implementAddVertex() {
-		int v = getNumVertices();
-		ArrayList<Integer> neighbors = new ArrayList<Integer>();
-		adjListsMap.put(v,  neighbors);
+		adjListsMap.put(getNumVertices(), new ArrayList<>());
 	}
 	
 	/** 
@@ -43,8 +33,7 @@ public class GraphAdjList extends Graph {
 	 * @param w the index of the end point for the edge.  
 	 */
 	public void implementAddEdge(int v, int w) {
-		(adjListsMap.get(v)).add(w);
-
+		adjListsMap.get(v).add(w);
 	}
 	
 	/** 
@@ -58,7 +47,7 @@ public class GraphAdjList extends Graph {
 	 * @return List<Integer> a list of indices of vertices.  
 	 */	
 	public List<Integer> getNeighbors(int v) {
-		return new ArrayList<Integer>(adjListsMap.get(v));
+		return new ArrayList<>(adjListsMap.get(v));
 	}
 
 	/** 
@@ -72,11 +61,8 @@ public class GraphAdjList extends Graph {
 	 * @return List<Integer> a list of indices of vertices.  
 	 */	
 	public List<Integer> getInNeighbors(int v) {
-		List<Integer> inNeighbors = new ArrayList<Integer>();
+		List<Integer> inNeighbors = new ArrayList<>();
 		for (int u : adjListsMap.keySet()) {
-			//iterate through all edges in u's adjacency list and 
-			//add u to the inNeighbor list of v whenever an edge
-			//with startpoint u has endpoint v.
 			for (int w : adjListsMap.get(u)) {
 				if (v == w) {
 					inNeighbors.add(u);
