@@ -19,29 +19,33 @@ public class Problem003 {
         int lengthOfLongestSubstring = 0;
 
         char[] chars = s.toCharArray();
-        for (int value : chars) {
-            if (set.add(value)) {
-                lengthOfLongestSubstring = recalculateLongestSubstringLength(set, value, lengthOfLongestSubstring);
+        for (int i = 0; i < chars.length; ++i) {
+            int value = chars[i];
+
+            if (!set.add(value)) {
+                lengthOfLongestSubstring = recalculateLongestSubstringLength(set, lengthOfLongestSubstring);
+                int index = i;
+                do {
+                    --i;
+                }
+                while (chars[index] != chars[i]);
             }
         }
 
-        return recalculateLongestSubstringLength(set, (int) chars[chars.length - 1], lengthOfLongestSubstring);
+        return recalculateLongestSubstringLength(set, lengthOfLongestSubstring);
     }
 
     private boolean isPreconditionFailed(String s) {
         return s == null || s.isEmpty();
     }
 
-    private int recalculateLongestSubstringLength(Set<Integer> set, int currentElement, int currentLength) {
+    private int recalculateLongestSubstringLength(Set<Integer> set, int currentLength) {
         int size = set.size();
 
         if (size > currentLength) {
             currentLength = size;
         }
-
-        // todo
-        set.removeIf(e -> e.equals(currentElement));
-        set.add(currentElement);
+        set.clear();
 
         return currentLength;
     }
