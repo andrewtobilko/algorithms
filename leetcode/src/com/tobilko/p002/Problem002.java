@@ -2,6 +2,8 @@ package com.tobilko.p002;
 
 import java.math.BigInteger;
 
+import static java.lang.String.valueOf;
+
 public class Problem002 {
 
     public static void main(String[] args) {
@@ -15,8 +17,7 @@ public class Problem002 {
         n21.next = n22;
         n22.next = new ListNode(4);
 
-        ListNode result = new Problem002().addTwoNumbers(n11, n21);
-        System.out.println(result);
+        System.out.println(new Problem002().addTwoNumbers(n11, n21));
     }
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
@@ -24,7 +25,7 @@ public class Problem002 {
     }
 
     private ListNode getListNodeFromValue(BigInteger value) {
-        String stringValue = reverseStringBuilderToString(new StringBuilder(String.valueOf(value)));
+        String stringValue = reverseStringBuilderToString(new StringBuilder(valueOf(value)));
 
         ListNode node = new ListNode((int) Long.parseLong(stringValue.substring(0, 1)));
         ListNode previous = node;

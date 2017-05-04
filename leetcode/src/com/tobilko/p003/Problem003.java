@@ -4,7 +4,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Problem003 {
-    // dvdf : v -> 2d -- <- v
+
     public static void main(String[] args) {
         System.out.println(new Problem003().lengthOfLongestSubstring("pwwkew"));
     }
