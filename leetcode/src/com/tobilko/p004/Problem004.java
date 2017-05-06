@@ -52,17 +52,4 @@ public class Problem004 {
         return -1;
     }
 
-    private int getMedianIndex(int[] arr) {
-        int length = arr.length;
-        return length % 2 == 0 ? getMedianIndexForEvenSequence(length) : getMedianIndexForOddSequence(length);
-    }
-
-    private int getMedianIndexForOddSequence(int n) {
-        return (n - 1) / 2;
-    }
-
-    private int getMedianIndexForEvenSequence(int n) {
-        return (int)Math.floor(getMedianIndexForOddSequence(n));
-    }
-
 }
