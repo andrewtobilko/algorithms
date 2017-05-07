@@ -1,55 +1,86 @@
 package com.tobilko.p004;
 
 
+import java.util.Arrays;
+
 public class Problem004 {
 
     public static void main(String[] args) {
-        new Problem004().findMedianSortedArrays(new int[]{1, 3, 5, 5}, new int[]{2});
+        System.out.println(new Problem004().findMedianSortedArrays(
+//                new int[]{1, 3, 8, 14, 20, 21, 30},
+//                new int[]{5, 11, 12, 14, 22, 32, 32, 33}
+                new int[]{}, new int[] {}
+        ));
     }
 
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int m = nums1.length;
-        int n = nums2.length;
+    public double findMedianSortedArrays(int[] firstArray, int[] secondArray) {
+        int m = firstArray.length;
+        int n = secondArray.length;
 
-        if (m == 0) {
-            if (n == 0) {
-                System.out.println("nums1 and nums2 are both 0-length arrays.");
-                return -1;
+        System.out.println("The first array = " + Arrays.toString(firstArray) + ", the length (m) = " + m);
+        System.out.println("The second array = " + Arrays.toString(secondArray) + ", the length (n) = " + n);
+
+        double median = 0;
+
+        if (m == 0 || n == 0) {
+
+            if (m == 0 && n == 0) {
+                System.out.println("Both arrays are empty. Returning 0...");
+            } else if (m == 0) {
+                System.out.println("The first array is empty. Calculating a median within the second array...");
+                median = findMedianWithinArray(secondArray);
+            } else {
+                System.out.println("The second array is empty. Calculating a median within the first array...");
+                median = findMedianWithinArray(firstArray);
             }
-            System.out.println("nums1 is a 0-length array.");
-            return findMedianIntoSortedArray(nums2, nums1);
+            return median;
         }
-
-        if (n == 0) {
-            System.out.println("nums2 is a 0-length array.");
-            return findMedianIntoSortedArray(nums1, nums2);
-        }
-
-        double result = -1;
 
         return m >= n ?
-                (result = findMedianIntoSortedArray(nums1, nums2)) == -1 ? findMedianIntoSortedArray(nums2, nums1) : result :
-                (result = findMedianIntoSortedArray(nums2, nums1)) == -1 ? findMedianIntoSortedArray(nums1, nums2) : result;
+                (median = findMedianSortedArray(firstArray, secondArray)) == -1 ? findMedianSortedArray(secondArray, firstArray) : median :
+                (median = findMedianSortedArray(secondArray, firstArray)) == -1 ? findMedianSortedArray(firstArray, secondArray) : median;
     }
 
-    private double findMedianIntoSortedArray(int[] nums1, int[] nums2) {
+    private double findMedianWithinArray(int[] array) {
+        return array.length % 2 == 0 ?
+                findMedianWithinArrayWithEvenElementNumber(array) :
+                findMedianWithinArrayWithOddElementNumber(array);
+    }
 
-        int m = nums1.length;
-        int n = nums2.length;
+    private double findMedianWithinArrayWithEvenElementNumber(int[] array) {
+        System.out.println("Finding a median index for the even length...");
 
-        for (int low = 0, high = m; low < high; ) {
-            int guess = low + high / 2;
+        int n = array.length;
+        return (array[n / 2] + array[(n - 1) / 2]) / 2.;
+    }
 
-            int totalLength = m + n;
-            int median = (totalLength - 1) / 2; // todo
+    private double findMedianWithinArrayWithOddElementNumber(int[] array) {
+        System.out.println("Finding a median index for the odd length...");
 
-            int numberElementsGreaterGuess = (totalLength - 1) - median;
-            int numberNums1ElementsGreaterGuess = n - guess;
-            int numberNums2ElementsGreaterGuess = numberElementsGreaterGuess - numberNums1ElementsGreaterGuess;
+        return array[(array.length - 1) / 2];
+    }
 
-        }
+    private double findMedianSortedArray(int[] array1, int[] array2) {
+        int m = array1.length;
+        int n = array2.length;
+        System.out.println("m = " + m + ", n = " + n);
 
-        return -1;
+        int medianIndexGuess = (m - 1) / 2;
+        System.out.println("g = " + medianIndexGuess + ", array[g] = " + array1[medianIndexGuess]);
+
+        int l = m + n;
+        System.out.println("total l = " + l);
+
+        int tGreaterMedianGuess = (l - 1) / 2;
+        int mGreaterMedianGuess = m - medianIndexGuess - 1;
+        int nGreaterMedianGuess = tGreaterMedianGuess - mGreaterMedianGuess + 1;
+        System.out.println("n > in a+b = " + tGreaterMedianGuess);
+        System.out.println("n > in a = " + mGreaterMedianGuess);
+        System.out.println("n > in b = " + nGreaterMedianGuess);
+
+        // todo
+
+        return 0.;
     }
 
 }
