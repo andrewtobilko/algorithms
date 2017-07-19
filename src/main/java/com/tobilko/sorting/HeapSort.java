@@ -36,3 +36,19 @@ class Heap<T extends Comparable<T>> {
     }
 
 }
+
+class HeapUtils {
+
+    public static int getParentIndex(int childIndex) {
+        return childIndex / 2;
+    }
+
+    public static int getLeftChildIndex(int parentIndex) {
+        return parentIndex * 2;
+    }
+
+    public static int getRightChildIndex(int parentIndex) {
+        return getLeftChildIndex(parentIndex) + 1;
+    }
+
+}
