@@ -1,37 +1,14 @@
-package com.tobilko.sorting;
+package com.tobilko.sorting.heap;
+
+import com.tobilko.sorting.heap.utils.BinaryHeapUtils;
 
 import java.util.Arrays;
-import java.util.stream.IntStream;
 
-public class HeapSort {
-
-    /**
-     *
-     * Builds a heap from an array in O(n) operations.
-     *
-     */
-    private <T extends Comparable<T>> void heapify(T[] array) {
-        Heap<T> heap = Heap.buildFromArray(array);
-
-        System.out.println(heap);
-    }
-
-    private <T extends Comparable<T>> T[] sort(T[] input) {
-        heapify(input);
-        return null;
-    }
-
-    public static void main(String[] args) {
-        new HeapSort().sort(IntStream.of(1, 9, 7, 4, 3).boxed().toArray(Integer[]::new));
-    }
-
-}
-
-class Heap<T extends Comparable<T>> {
+public class BinaryHeap<T extends Comparable<T>> {
 
     private T[] array;
 
-    private Heap(T[] array) {
+    private BinaryHeap(T[] array) {
         this.array = array;
         convertToHeapInternalArray(array);
     }
@@ -40,7 +17,7 @@ class Heap<T extends Comparable<T>> {
         int length = array.length;
         int lastElementIndex = length - 1;
 
-        int startIndex = HeapUtils.getParentIndex(lastElementIndex); // last parent index
+        int startIndex = BinaryHeapUtils.getParentIndex(lastElementIndex); // last parent index
 
         for (;startIndex >= 0; --startIndex) {
             siftDown(startIndex, lastElementIndex);
@@ -50,8 +27,8 @@ class Heap<T extends Comparable<T>> {
     public void siftDown(int startIndex, int endIndex) {
         int rootIndex = startIndex;
 
-        while(HeapUtils.getLeftChildIndex(rootIndex) <= endIndex) {
-            int leftChildIndex = HeapUtils.getLeftChildIndex(rootIndex);
+        while(BinaryHeapUtils.getLeftChildIndex(rootIndex) <= endIndex) {
+            int leftChildIndex = BinaryHeapUtils.getLeftChildIndex(rootIndex);
             int rightChildIndex = leftChildIndex + 1;
 
             int swapIndex = rootIndex;
@@ -83,8 +60,8 @@ class Heap<T extends Comparable<T>> {
         array[secondIndex] = temp;
     }
 
-    public static <T extends Comparable<T>> Heap<T> buildFromArray(T[] array) {
-        return new Heap<>(array);
+    public static <T extends Comparable<T>> BinaryHeap<T> buildFromArray(T[] array) {
+        return new BinaryHeap<>(array);
     }
 
     @Override
@@ -94,22 +71,6 @@ class Heap<T extends Comparable<T>> {
 
     public String toPrettyString() {
         return "";
-    }
-
-}
-
-class HeapUtils {
-
-    public static int getParentIndex(int childIndex) {
-        return childIndex / 2;
-    }
-
-    public static int getLeftChildIndex(int parentIndex) {
-        return parentIndex * 2 + 1;
-    }
-
-    public static int getRightChildIndex(int parentIndex) {
-        return getLeftChildIndex(parentIndex) + 1;
     }
 
 }
