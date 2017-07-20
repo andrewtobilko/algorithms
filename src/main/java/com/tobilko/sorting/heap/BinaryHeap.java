@@ -24,7 +24,7 @@ public class BinaryHeap<T extends Comparable<T>> {
         }
     }
 
-    public void siftDown(int startIndex, int endIndex) {
+    private void siftDown(int startIndex, int endIndex) {
         int rootIndex = startIndex;
 
         while(BinaryHeapUtils.getLeftChildIndex(rootIndex) <= endIndex) {
@@ -62,6 +62,10 @@ public class BinaryHeap<T extends Comparable<T>> {
 
     public static <T extends Comparable<T>> BinaryHeap<T> buildFromArray(T[] array) {
         return new BinaryHeap<>(array);
+    }
+
+    public long getHeight() {
+        return Math.round(Math.log(2 * array.length - 1) / Math.log(2)) - 1;
     }
 
     @Override

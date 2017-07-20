@@ -10,7 +10,8 @@ public class HeapSort {
     private <T extends Comparable<T>> void heapify(T[] array) {
         BinaryHeap<T> heap = BinaryHeap.buildFromArray(array);
 
-        System.out.println(heap.toPrettyString());
+        System.out.println(heap.toString());
+        System.out.println("height = " + heap.getHeight());
     }
 
     private <T extends Comparable<T>> T[] sort(T[] input) {
