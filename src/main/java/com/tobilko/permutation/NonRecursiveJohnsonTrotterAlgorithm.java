@@ -3,15 +3,12 @@ package com.tobilko.permutation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 /**
- *
  * We assume that directions are specified by boolean values.
- *
+ * <p>
  * -> = the right direction = true
  * <- = the left direction = false
- *
  */
 public class NonRecursiveJohnsonTrotterAlgorithm {
 
@@ -28,7 +25,7 @@ public class NonRecursiveJohnsonTrotterAlgorithm {
     public List<int[]> generatePermutations(int n) {
 
         // 1. generate an array of values
-        int[] values = IntStream.range(0, n).toArray();
+        int[] values = new int[n];
 
         // 2. generate the default direction <- for each value
         boolean[] directions = new boolean[n];
@@ -48,6 +45,7 @@ public class NonRecursiveJohnsonTrotterAlgorithm {
                 }
             }
 
+            System.out.println("highest index = " + highestMovableIndex);
             // no movable found
             if (highestMovableIndex == -1) {
                 isAnyMovable = false;
@@ -56,6 +54,7 @@ public class NonRecursiveJohnsonTrotterAlgorithm {
             // change directions for all elements that are greater than the current one
             for (int i = 0; i < n; ++i) {
                 if (values[i] > values[highestMovableIndex]) {
+                    System.out.println("changing the direction of values[i] = " + values[i] + ", i = " + i + ", d = " + directions[i]);
                     directions[i] = !directions[i];
                 }
             }
@@ -93,6 +92,5 @@ public class NonRecursiveJohnsonTrotterAlgorithm {
     private boolean isIn(int index, int lowerBound, int upperBound) {
         return index >= lowerBound && index <= upperBound;
     }
-
 
 }
