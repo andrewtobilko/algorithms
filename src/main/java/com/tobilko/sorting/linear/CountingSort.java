@@ -1,15 +1,17 @@
-package com.tobilko.sorting;
+package com.tobilko.sorting.linear;
 
 import java.util.Arrays;
-import java.util.Random;
-import java.util.stream.IntStream;
 
 /**
+ *
+ * INPUT: integers in the range 0 to k, k = O(n) -> Θ(n).
+ *
+ * For each x, counts the number of elements less than x.
+ *
+ *
  * Created by Andrew Tobilko on 9/20/17.
  */
 public final class CountingSort {
-
-    private final static int K = 100;
 
     public static void sort(int[] array) {
 
@@ -18,7 +20,7 @@ public final class CountingSort {
         int A = array.length;
 
         int B[] = new int[A];
-        int C[] = new int[K];
+        int C[] = new int[100];
 
         for (int i = 0; i < A; i++) {
             C[array[i]] = C[array[i]] + 1;
@@ -32,7 +34,7 @@ public final class CountingSort {
     }
 
     public static void main(String[] args) {
-        sort(new Random().ints().limit(10).filter(i -> i < K).toArray());
+        sort(new int[] {23, 2, 4, 12, 13, 11, 34, 32, 45, 100, 23, 34, 76, 53, 98});
     }
 
 }
