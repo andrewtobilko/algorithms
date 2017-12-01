@@ -15,20 +15,20 @@ public final class G1 {
 
     @Test
     public void testGettingFirstRecurringString() {
-        final Function<String, Character> function = this::getFirstRecurringString;
+        final Function<String, Character> getFirstRecurringChar = this::getFirstRecurringChar;
 
-        assertEquals(function.apply("BADCBA"), Character.valueOf('B'));
-        assertEquals(function.apply("BBBBBB"), Character.valueOf('B'));
-        assertEquals(function.apply("ABCDEF"), null);
-        assertEquals(function.apply(""), null);
+        assertEquals(Character.valueOf('B'), getFirstRecurringChar.apply("BADCBA"));
+        assertEquals(Character.valueOf('B'), getFirstRecurringChar.apply("BBBBBB"));
+        assertEquals(null, getFirstRecurringChar.apply("ABCDEF"));
+        assertEquals(null, getFirstRecurringChar.apply(""));
     }
 
-    private Character getFirstRecurringString(String string) {
-        final int length = string.length();
-
-        if (length == 0) {
+    private Character getFirstRecurringChar(String string) {
+        if (string == null || string.isEmpty()) {
             return null;
         }
+
+        final int length = string.length();
 
         for (int i = 0; i < length; i++) {
             char iChar = string.charAt(i);
@@ -47,21 +47,20 @@ public final class G1 {
 
     @Test
     public void testGettingFirstRecurringString2() {
-        final Function<String, Character> function = this::getFirstRecurringString2;
+        final Function<String, Character> getFirstRecurringChar2 = this::getFirstRecurringChar2;
 
-        assertEquals(function.apply("BADCBA"), Character.valueOf('B'));
-        assertEquals(function.apply("BBBBBB"), Character.valueOf('B'));
-        assertEquals(function.apply("ABCDEF"), null);
-        assertEquals(function.apply(""), null);
+        assertEquals(Character.valueOf('B'), getFirstRecurringChar2.apply("BADCBA"));
+        assertEquals(Character.valueOf('B'), getFirstRecurringChar2.apply("BBBBBB"));
+        assertEquals(null, getFirstRecurringChar2.apply("ABCDEF"));
+        assertEquals(null, getFirstRecurringChar2.apply(""));
     }
 
-    private Character getFirstRecurringString2(String string) {
-        final int length = string.length();
-
-        if (length == 0) {
+    private Character getFirstRecurringChar2(String string) {
+        if (string == null || string.isEmpty()) {
             return null;
         }
 
+        final int length = string.length();
         final Set<Character> set = new HashSet<>();
 
         for (int i = 0; i < length; i++) {
@@ -73,6 +72,18 @@ public final class G1 {
             set.add(currentChar);
         }
 
+        return null;
+    }
+
+    @Test
+    public void testGettingFirstNonRecurringString() {
+        final Function<String, Character> getFirstNonRecurringChar = this::getFirstNonRecurringChar;
+
+        // TODO: 12/1/17
+    }
+
+    private Character getFirstNonRecurringChar(String string) {
+        // TODO: 12/1/17
         return null;
     }
 
