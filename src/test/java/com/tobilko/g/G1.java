@@ -3,6 +3,8 @@ package com.tobilko.g;
 import org.junit.Test;
 
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.function.Function;
 
@@ -79,11 +81,61 @@ public final class G1 {
     public void testGettingFirstNonRecurringString() {
         final Function<String, Character> getFirstNonRecurringChar = this::getFirstNonRecurringChar;
 
-        // TODO: 12/1/17
+        assertEquals(null, getFirstNonRecurringChar.apply(""));
+        assertEquals(null, getFirstNonRecurringChar.apply(null));
+
+        assertEquals(Character.valueOf('B'), getFirstNonRecurringChar.apply("BAACCDDEEFF"));
+        assertEquals(Character.valueOf('A'), getFirstNonRecurringChar.apply("BBACCDDEEFF"));
+        assertEquals(null, getFirstNonRecurringChar.apply("BBAACCDDEEFF"));
+        assertEquals(Character.valueOf('C'), getFirstNonRecurringChar.apply("ABABC"));
+        assertEquals(Character.valueOf('B'), getFirstNonRecurringChar.apply("ABAAAAbC"));
     }
 
     private Character getFirstNonRecurringChar(String string) {
+        System.out.println("----");
+        if (string == null || string.isEmpty()) {
+            return null;
+        }
+
+        final int length = string.length();
+        // iteration order is important
+        final Set<Character> set = new LinkedHashSet<>();
+
+        for (int i = 0; i < length; i++) {
+            char currentChar = string.charAt(i);
+
+            // if an element is already in the set, remove it
+            if (!set.add(currentChar)) {
+                set.remove(currentChar);
+            }
+        }
+
+        // get the element added first
+        final Iterator<Character> iterator = set.iterator();
+        return iterator.hasNext() ? iterator.next() : null;
+    }
+
+    @Test
+    public void testGettingFirstNonRecurringString2() {
+        final Function<String, Character> getFirstNonRecurringChar = this::getFirstNonRecurringChar2;
+
+        assertEquals(null, getFirstNonRecurringChar.apply(""));
+        assertEquals(null, getFirstNonRecurringChar.apply(null));
+//
+//        assertEquals(Character.valueOf('B'), getFirstNonRecurringChar.apply("BAACCDDEEFF"));
+//        assertEquals(Character.valueOf('A'), getFirstNonRecurringChar.apply("BBACCDDEEFF"));
+//        assertEquals(null, getFirstNonRecurringChar.apply("BBAACCDDEEFF"));
+//        assertEquals(Character.valueOf('C'), getFirstNonRecurringChar.apply("ABABC"));
+//        assertEquals(Character.valueOf('B'), getFirstNonRecurringChar.apply("ABAAAAbC"));
+    }
+
+    private Character getFirstNonRecurringChar2(String string) {
+        if (string == null || string.isEmpty()) {
+            return null;
+        }
+
         // TODO: 12/1/17
+
         return null;
     }
 
