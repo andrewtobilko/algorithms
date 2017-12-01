@@ -8,6 +8,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.function.Function;
 
+import static java.lang.Character.*;
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -19,8 +20,8 @@ public final class G1 {
     public void testGettingFirstRecurringString() {
         final Function<String, Character> getFirstRecurringChar = this::getFirstRecurringChar;
 
-        assertEquals(Character.valueOf('B'), getFirstRecurringChar.apply("BADCBA"));
-        assertEquals(Character.valueOf('B'), getFirstRecurringChar.apply("BBBBBB"));
+        assertEquals(valueOf('B'), getFirstRecurringChar.apply("BADCBA"));
+        assertEquals(valueOf('B'), getFirstRecurringChar.apply("BBBBBB"));
         assertEquals(null, getFirstRecurringChar.apply("ABCDEF"));
         assertEquals(null, getFirstRecurringChar.apply(""));
     }
@@ -51,8 +52,8 @@ public final class G1 {
     public void testGettingFirstRecurringString2() {
         final Function<String, Character> getFirstRecurringChar2 = this::getFirstRecurringChar2;
 
-        assertEquals(Character.valueOf('B'), getFirstRecurringChar2.apply("BADCBA"));
-        assertEquals(Character.valueOf('B'), getFirstRecurringChar2.apply("BBBBBB"));
+        assertEquals(valueOf('B'), getFirstRecurringChar2.apply("BADCBA"));
+        assertEquals(valueOf('B'), getFirstRecurringChar2.apply("BBBBBB"));
         assertEquals(null, getFirstRecurringChar2.apply("ABCDEF"));
         assertEquals(null, getFirstRecurringChar2.apply(""));
     }
@@ -84,15 +85,14 @@ public final class G1 {
         assertEquals(null, getFirstNonRecurringChar.apply(""));
         assertEquals(null, getFirstNonRecurringChar.apply(null));
 
-        assertEquals(Character.valueOf('B'), getFirstNonRecurringChar.apply("BAACCDDEEFF"));
-        assertEquals(Character.valueOf('A'), getFirstNonRecurringChar.apply("BBACCDDEEFF"));
+        assertEquals(valueOf('B'), getFirstNonRecurringChar.apply("BAACCDDEEFF"));
+        assertEquals(valueOf('A'), getFirstNonRecurringChar.apply("BBACCDDEEFF"));
         assertEquals(null, getFirstNonRecurringChar.apply("BBAACCDDEEFF"));
-        assertEquals(Character.valueOf('C'), getFirstNonRecurringChar.apply("ABABC"));
-        assertEquals(Character.valueOf('B'), getFirstNonRecurringChar.apply("ABAAAAbC"));
+        assertEquals(valueOf('C'), getFirstNonRecurringChar.apply("ABABC"));
+        assertEquals(valueOf('B'), getFirstNonRecurringChar.apply("ABAAAAbC"));
     }
 
     private Character getFirstNonRecurringChar(String string) {
-        System.out.println("----");
         if (string == null || string.isEmpty()) {
             return null;
         }
@@ -113,30 +113,6 @@ public final class G1 {
         // get the element added first
         final Iterator<Character> iterator = set.iterator();
         return iterator.hasNext() ? iterator.next() : null;
-    }
-
-    @Test
-    public void testGettingFirstNonRecurringString2() {
-        final Function<String, Character> getFirstNonRecurringChar = this::getFirstNonRecurringChar2;
-
-        assertEquals(null, getFirstNonRecurringChar.apply(""));
-        assertEquals(null, getFirstNonRecurringChar.apply(null));
-//
-//        assertEquals(Character.valueOf('B'), getFirstNonRecurringChar.apply("BAACCDDEEFF"));
-//        assertEquals(Character.valueOf('A'), getFirstNonRecurringChar.apply("BBACCDDEEFF"));
-//        assertEquals(null, getFirstNonRecurringChar.apply("BBAACCDDEEFF"));
-//        assertEquals(Character.valueOf('C'), getFirstNonRecurringChar.apply("ABABC"));
-//        assertEquals(Character.valueOf('B'), getFirstNonRecurringChar.apply("ABAAAAbC"));
-    }
-
-    private Character getFirstNonRecurringChar2(String string) {
-        if (string == null || string.isEmpty()) {
-            return null;
-        }
-
-        // TODO: 12/1/17
-
-        return null;
     }
 
 }
