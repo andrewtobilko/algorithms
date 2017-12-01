@@ -8,7 +8,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.function.Function;
 
-import static java.lang.Character.*;
+import static java.lang.Character.valueOf;
 import static org.junit.Assert.assertEquals;
 
 /**
