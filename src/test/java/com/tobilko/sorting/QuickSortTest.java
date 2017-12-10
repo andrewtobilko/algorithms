@@ -1,5 +1,6 @@
 package com.tobilko.sorting;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -11,10 +12,13 @@ public class QuickSortTest {
 
     @Test
     public void test() {
-        int[] array = new int[] {23, 2, 2, -23, 213, 12};
-        System.out.println("before = " + Arrays.toString(array));
-        new QuickSort().sort(array, 0, array.length - 1);
-        System.out.println("after = " + Arrays.toString(array));
+        int[] A = new int[] {23, 2, 2, -23, 213, 12};
+        final int[] B = Arrays.copyOf(A, A.length);
+
+        new QuickSort().sort(A, 0, A.length - 1);
+        Arrays.sort(B);
+
+        Assert.assertArrayEquals(B, A);
     }
 
 }
