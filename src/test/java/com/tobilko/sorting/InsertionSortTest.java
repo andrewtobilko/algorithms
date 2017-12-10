@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
  * @author Andrew Tobilko
  */
 public class InsertionSortTest {
+
     @Test
     public void test() throws Exception {
         Integer[] array = Assistant.generate(Byte.MAX_VALUE, Integer.MIN_VALUE / 2, Integer.MAX_VALUE / 2);
@@ -17,4 +18,5 @@ public class InsertionSortTest {
         InsertionSort.sort(array);
         Assistant.show(array);
     }
+
 }
