@@ -1,28 +1,46 @@
 package com.tobilko.sorting;
 
+import static com.tobilko.Assistant.swap;
+
 /**
  *
  * Created by Andrew Tobilko on 12/8/17.
  */
 public final class QuickSort {
 
-    public void sort(int[] array, int lowerIndex, int upperIndex) {
-        if (lowerIndex < upperIndex) {
-            int pivot = partition(array, lowerIndex, upperIndex);
-            sort(array, lowerIndex, pivot - 1);
-            sort(array, pivot + 1, upperIndex);
+    public void sort(int[] A, int p, int r) {
+        if (p < r) {
+            final int q = partition(A, p, r);
+            sort(A, p, q - 1);
+            sort(A, q + 1, r);
         }
     }
 
-    private int partition(int[] array, int lowerIndex, int upperIndex) {
-        return applyHoarePartitionSchema(array, lowerIndex, upperIndex);
+    private int partition(int[] A, int p, int r) {
+        return applyDefaultPartitionSchema(A, p, r);
     }
 
-    private int applyHoarePartitionSchema(int[] array, int lowerIndex, int upperIndex) {
-        int pivot = array[lowerIndex];
+    private int applyDefaultPartitionSchema(int[] A, int p, int r) {
+        final int pivot = A[r];
+        int i = p - 1;
 
-        int l = lowerIndex - 1;
-        int u = upperIndex + 1;
+        for (int j = p; j < r - 1; ++j) {
+            if (A[j] <= pivot) {
+                swap(A, ++i, j);
+            }
+        }
+
+        ++i;
+        swap(A, i, r);
+
+        return i;
+    }
+
+    private int applyHoarePartitionSchema(int[] array, int p, int r) {
+        final int pivot = array[p];
+
+        int l = p - 1;
+        int u = r + 1;
 
         while (true) {
             do {
@@ -37,7 +55,7 @@ public final class QuickSort {
                 return u;
             }
 
-            swapArrayElementsByIndices(array, l, u);
+            swap(array, l, u);
         }
 
     }
@@ -48,10 +66,5 @@ public final class QuickSort {
         return 0;
     }
 
-    private void swapArrayElementsByIndices(int[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
 
 }
