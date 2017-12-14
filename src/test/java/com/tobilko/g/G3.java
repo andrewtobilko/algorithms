@@ -3,6 +3,7 @@ package com.tobilko.g;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Random;
 
 /**
@@ -14,13 +15,13 @@ public final class G3 {
     public void test() {
         final int[] array = {2, 3, 4, 5, 6, 7, 8};
         System.out.println("before = " + Arrays.toString(array));
-        shuffleArrayRandomly(array);
+        shuffleArrayRandomly1(array);
         System.out.println("after = " + Arrays.toString(array));
     }
 
-    private int[] shuffleArrayRandomly(int[] array) {
+    private void shuffleArrayRandomly1(int[] array) {
         if (array == null || array.length <= 1) {
-            return array;
+            return;
         }
 
         final int length = array.length;
@@ -29,8 +30,6 @@ public final class G3 {
         for (int i = 0; i < length; i++) {
             swapInArrayByIndices(array, i, (int) Math.floor(random.nextDouble()));
         }
-
-        return array;
     }
 
     private void swapInArrayByIndices(int[] array, int i, int j) {
@@ -38,4 +37,20 @@ public final class G3 {
         array[i] = array[j];
         array[j] = temp;
     }
+
+    private void shuffleArrayRandomly2(int[] array) {
+        if (array == null || array.length <= 1) {
+            return;
+        }
+
+        final int length = array.length;
+        final Random random = new Random();
+
+        final double[] randomlyGeneratedArray = new double[length];
+
+        for (int i = 0; i < length; i++) {
+            randomlyGeneratedArray[i] = random.nextDouble();
+        }
+    }
+
 }

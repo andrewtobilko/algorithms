@@ -3,21 +3,16 @@ package com.tobilko.sorting;
 import static com.tobilko.Assistant.swap;
 
 /**
- *
  * Created by Andrew Tobilko on 12/8/17.
  */
 public final class QuickSort {
 
     public void sort(int[] A, int p, int r) {
         if (p < r) {
-            final int q = partition(A, p, r);
+            final int q = applyDefaultPartitionSchema(A, p, r);
             sort(A, p, q - 1);
             sort(A, q + 1, r);
         }
-    }
-
-    private int partition(int[] A, int p, int r) {
-        return applyDefaultPartitionSchema(A, p, r);
     }
 
     private int applyDefaultPartitionSchema(int[] A, int p, int r) {
