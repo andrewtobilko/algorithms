@@ -1,8 +1,19 @@
 package com.tobilko.euler;
 
+
+import javafx.util.Pair;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
+
+import static java.util.Arrays.asList;
 
 /**
  * Created by Andrew Tobilko on 3/30/18.
@@ -76,6 +87,6 @@ public class P7 {
         return true;
     }
 
-    private static List<Long> primes = new ArrayList<>(Arrays.asList(2L, 3L, 5L, 7L, 11L));
+    private static List<Long> primes = new ArrayList<>(asList(2L, 3L, 5L, 7L, 11L));
 
 }
