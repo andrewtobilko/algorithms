@@ -171,10 +171,6 @@ class State {
         return rightBank;
     }
 
-    public static boolean isValid(Set<String> l, Set<String> r) {
-        return isValid(l) && isValid(r);
-    }
-
     public boolean isValid() {
         return isValid(leftBank) && isValid(rightBank);
     }
